@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        h2{
+            font-weight: lighter;
+            margin-bottom: 50px;
+        }
+        
+a{
+    /* border: 1px solid red; */
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    padding: 0px 30px;
+    justify-content: end;
+}
+
+#form{
+    box-shadow: rgba(24, 24, 24, 0.35) 0px 5px 15px;
+ 
+    background-color: rgb(255, 255, 255);
+    width: 20%;
+    margin: auto;
+    background-color: rgb(35, 190, 190);
+    margin-top: 50px;
+    padding: 20px 60px 20px 60px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+#form>input{
+    width: 100%;
+    margin-bottom: 15px;
+    border: 0px solid gray;
+    font-size: 15px;
+    padding: 20px ;
+}
+.submit{
+    margin-top: 50px;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: rgb(21, 218, 218);
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <div><a id=" logged" href="index.html"></a></div>
+    <div><a href="login.html">Login</a></div>
+    <form id="form">
+        <h2>- Visitor -</h2>
+        <input id="name" type="text" placeholder="Full name">
+        <input id="userEmail" type="email" placeholder="Email">
+        <input id="userPass" type="password" placeholder="Password">
+        <input class="submit" type="submit" value="SIGNUP">
+    </form>
+</body>
+</html>
+
+<script>
+    
+
+    document.querySelector("#form").addEventListener("submit",userdatainput)
+
+    var userDataArr = JSON.parse(localStorage.getItem("usersData"))||[];
+    
+    function userdatainput(){
+        event.preventDefault()
+
+        var userDataObj = {};
+        
+                var userMbl = document.querySelector("#name").value
+                userDataObj.Name = userMbl;
+
+        var userEmail = document.querySelector("#userEmail").value
+        userDataObj.Email = userEmail;
+        
+        var userPass = document.querySelector("#userPass").value
+        userDataObj.Password = userPass;
+
+        userDataArr.push(userDataObj)
+
+        // console.log(userDataArr)
+
+        localStorage.setItem("usersData",JSON.stringify(userDataArr));
+
+      
+
+
+        document.querySelector("#name").value = ""
+        document.querySelector("#userEmail").value = ""
+        document.querySelector("#userPass").value = ""
+
+       
+        
+       
+
+       window.location.href="login.html"
+
+    }
+   
+
+
+
+
+</script>
